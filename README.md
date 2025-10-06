@@ -50,24 +50,52 @@ This will make the `enact` package available for import and install console comm
 
 ## Usage
 
-### Running Scripts
+### Quick Start with CLI
 
-After installation, you can run scripts directly from the command line:
+After installation, use the unified `enact` command:
 
 ```bash
-# Run segmentation (supports both single task and batch mode)
+# Segmentation - process activities into frames
+enact segment
+
+# QA Generation - create question-answer pairs
+enact qa
+
+# Evaluation - evaluate model outputs
+enact eval model_outputs/
+
+# Get help
+enact --help
+enact segment --help
+```
+
+**Complete pipeline example:**
+```bash
+# 1. Segment activities
+enact segment data/replayed_activities data/segmented_activities
+
+# 2. Generate QA pairs
+enact qa --seed 42 --num-to-sample 10
+
+# 3. Evaluate model
+enact eval model_output.jsonl --analyze-wrong-cases
+```
+
+For detailed CLI documentation, see **[CLI_GUIDE.md](CLI_GUIDE.md)**.
+
+### Alternative: Direct Script Usage
+
+You can also run scripts directly:
+
+```bash
+# Run segmentation
 python scripts/enact/run_segmentation.py [input_root] [output_root]
 
 # Run QA generation
 python scripts/enact/run_qa_generation.py [input_root] [raw_data_dir] [output_file]
 
-# Run evaluation (supports both single file and batch mode)
+# Run evaluation
 python scripts/enact/run_eval.py [input_path]
-
-# For detailed usage and options
-python scripts/enact/run_segmentation.py --help
-python scripts/enact/run_qa_generation.py --help
-python scripts/enact/run_eval.py --help
 ```
 
 Default paths:
