@@ -18,15 +18,18 @@ setup(
     long_description_content_type="text/markdown",
     author="ENACT Team",
     python_requires=">=3.10",
-    packages=find_packages(include=["enact", "enact.*"]),
+    packages=find_packages(include=["enact", "enact.*", "scripts", "scripts.*"]),
     install_requires=[
         "numpy>=1.20.0",
         "Pillow>=8.0.0",
         "tqdm>=4.60.0",
         "opencv-python>=4.5.0",
+        "gdown>=4.6.0",
+        "huggingface-hub>=0.16.0",
     ],
     entry_points={
         'console_scripts': [
+            'enact=scripts.enact.cli:main',
             'enact-segment=scripts.enact.run_segmentation:main',
             'enact-qa=scripts.enact.run_qa_generation:main',
             'enact-eval=scripts.enact.run_eval:main',

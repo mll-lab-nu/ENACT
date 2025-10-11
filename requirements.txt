@@ -6,3 +6,6 @@ Pillow>=8.0.0
 tqdm>=4.60.0
 opencv-python>=4.5.0
 
+# Dataset download dependencies
+gdown>=4.6.0
+huggingface-hub>=0.16.0

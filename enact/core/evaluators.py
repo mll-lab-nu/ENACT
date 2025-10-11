@@ -47,11 +47,7 @@ class TaskWiseOrderingVerifier:
         """
         Extract sensor names from the image_paths dictionary.
         """
-        if not self.task_data.image_paths:
-            return []
-        # Get sensor names from the first frame's image paths
-        first_frame_id = list(self.task_data.image_paths.keys())[0]
-        return list(self.task_data.image_paths[first_frame_id].keys())
+        return ["external_sensor1"]
 
     def _translate_sequence_to_signatures(
         self,

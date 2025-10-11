@@ -21,6 +21,8 @@ dependencies = [
     "Pillow>=8.0.0",
     "tqdm>=4.60.0",
     "opencv-python>=4.5.0",
+    "gdown>=4.6.0",
+    "huggingface-hub>=0.16.0"
 ]
 
 [project.scripts]
@@ -32,5 +34,5 @@ enact-qa = "scripts.enact.run_qa_generation:main"
 enact-eval = "scripts.enact.run_eval:main"
 
 [tool.setuptools]
-packages = ["enact", "enact.core", "enact.processors", "enact.utils"]
+packages = ["enact", "enact.core", "enact.processors", "enact.utils", "scripts", "scripts.enact", "scripts.helpers"]
 
