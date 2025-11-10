@@ -1,5 +1,36 @@
 # ENACT: Embodied Cognition through World Modeling from Egocentric Interaction
 
+<!-- Badges -->
+<div align="center">
+
+[![Homepage](https://img.shields.io/badge/🏠-Homepage-blue.svg)](https://enact-embodied-cognition.github.io/)
+[![arXiv](https://img.shields.io/badge/arXiv-Coming%20Soon-lightgrey.svg)](#)
+[![PDF](https://img.shields.io/badge/📄-PDF-0e8a16.svg)](#)
+[![Dataset](https://img.shields.io/badge/🤗-Dataset-yellow.svg)](https://huggingface.co/datasets/MLL-Lab/ENACT)
+
+</div>
+
+<p align="center">
+  <a href="https://qinengwang-aiden.github.io/">Qineng Wang<sup>1*</sup></a>, 
+  <a href="https://wenlong.page/">Wenlong Huang<sup>2*</sup></a>, 
+  <a href="https://yu-bryan-zhou.github.io/">Yu Zhou<sup>3</sup></a>, 
+  <a href="https://hang-yin.github.io/">Hang Yin<sup>2</sup></a>, 
+  <a href="https://www.linkedin.com/in/tianwei-bao-625b67232/">Tianwei Bao<sup>1</sup></a>, 
+  <a href="https://www.linkedin.com/in/jianwen-lyu-ba9a11329/">Jianwen Lyu<sup>1</sup></a>, 
+  <a href="https://www.weiyuliu.com/">Weiyu Liu<sup>2</sup></a>
+</p>
+<p align="center">
+  <a href="https://ruohanzhang.com/">Ruohan Zhang<sup>2†</sup></a>, 
+  <a href="https://jiajunwu.com/">Jiajun Wu<sup>2†</sup></a>, 
+  <a href="https://profiles.stanford.edu/fei-fei-li">Li Fei-Fei<sup>2†</sup></a>, 
+  <a href="https://limanling.github.io/">Manling Li<sup>1†</sup></a>
+</p>
+
+<p align="center">*Equal contribution, †Equal advising</p>
+<p align="center"><sup>1</sup>Northwestern University, <sup>2</sup>Stanford University, <sup>3</sup>UCLA</p>
+
+---
+
 **ENACT** is a benchmark that evaluates embodied cognition through world modeling from egocentric interaction. It is designed to be simple and have a scalable dataset for evaluating forward and inverse dynamics in embodied AI systems.
 
 The benchmark tests models on their ability to:
