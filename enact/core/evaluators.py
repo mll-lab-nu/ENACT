@@ -875,20 +875,28 @@ class OrderingEvaluator:
         Generate comprehensive overall performance report with detailed metrics.
         
         Returns:
-            Dict[str, Any]: Dictionary containing comprehensive overall metrics
+            Dict[str, Any]: Dictionary containing comprehensive overall metrics including per-step accuracy
         """
         if not self.eval_results:
             print("No evaluation results found. Please run evaluate() first.")
             return {}
             
-        # Collect metrics by dynamics type
+        # Collect metrics by dynamics type and by number of steps
         forward_metrics = defaultdict(list)
         inverse_metrics = defaultdict(list)
         all_metrics = defaultdict(list)
         
+        # Per-step metrics: {num_steps: {metric_name: [values]}}
+        forward_per_step = defaultdict(lambda: defaultdict(list))
+        inverse_per_step = defaultdict(lambda: defaultdict(list))
+        all_per_step = defaultdict(lambda: defaultdict(list))
+        
         for result in self.eval_results.values():
             task_type = result.get('type', '').lower()
             eval_metrics = result.get('eval_metrics', {})
+            gt_answer = result.get('gt_answer', [])
+            # num_steps is the actual number of states/frames: initial state + future states
+            num_steps = len(gt_answer) + 1
             
             if not eval_metrics:
                 continue
@@ -897,11 +905,28 @@ class OrderingEvaluator:
             for metric_name in ['exact_match', 'semantic_match', 'task_accuracy', 'pairwise_accuracy']:
                 metric_value = eval_metrics.get(metric_name, 0.0 if metric_name in ['pairwise_accuracy'] else False)
                 all_metrics[metric_name].append(metric_value)
+                all_per_step[num_steps][metric_name].append(metric_value)
                 
                 if 'forward' in task_type:
                     forward_metrics[metric_name].append(metric_value)
+                    forward_per_step[num_steps][metric_name].append(metric_value)
                 elif 'inverse' in task_type:
                     inverse_metrics[metric_name].append(metric_value)
+                    inverse_per_step[num_steps][metric_name].append(metric_value)
+        
+        # Helper function to compute per-step statistics
+        def compute_per_step_stats(per_step_metrics):
+            """Compute statistics for each step count."""
+            per_step_stats = {}
+            for num_steps in sorted(per_step_metrics.keys()):
+                metrics = per_step_metrics[num_steps]
+                if metrics['task_accuracy']:
+                    per_step_stats[f"{num_steps}_steps"] = {
+                        'count': len(metrics['task_accuracy']),
+                        'task_accuracy': sum(metrics['task_accuracy']) / len(metrics['task_accuracy']),
+                        'pairwise_accuracy': np.mean(metrics['pairwise_accuracy'])
+                    }
+            return per_step_stats
         
         # Build comprehensive report
         report = {}
@@ -911,7 +936,8 @@ class OrderingEvaluator:
             report['overall'] = {
                 'count': len(all_metrics['task_accuracy']),
                 'task_accuracy': sum(all_metrics['task_accuracy']) / len(all_metrics['task_accuracy']),
-                'pairwise_accuracy': np.mean(all_metrics['pairwise_accuracy'])
+                'pairwise_accuracy': np.mean(all_metrics['pairwise_accuracy']),
+                'per_step': compute_per_step_stats(all_per_step)
             }
         
         # Forward world modeling statistics
@@ -919,7 +945,8 @@ class OrderingEvaluator:
             report['forward_world_modeling'] = {
                 'count': len(forward_metrics['task_accuracy']),
                 'task_accuracy': sum(forward_metrics['task_accuracy']) / len(forward_metrics['task_accuracy']),
-                'pairwise_accuracy': np.mean(forward_metrics['pairwise_accuracy'])
+                'pairwise_accuracy': np.mean(forward_metrics['pairwise_accuracy']),
+                'per_step': compute_per_step_stats(forward_per_step)
             }
         
         # Inverse world modeling statistics
@@ -927,7 +954,8 @@ class OrderingEvaluator:
             report['inverse_world_modeling'] = {
                 'count': len(inverse_metrics['task_accuracy']),
                 'task_accuracy': sum(inverse_metrics['task_accuracy']) / len(inverse_metrics['task_accuracy']),
-                'pairwise_accuracy': np.mean(inverse_metrics['pairwise_accuracy'])
+                'pairwise_accuracy': np.mean(inverse_metrics['pairwise_accuracy']),
+                'per_step': compute_per_step_stats(inverse_per_step)
             }
                 
         return report
