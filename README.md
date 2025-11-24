@@ -839,10 +839,11 @@ eval_processor.process_all_files()
 If you use ENACT in your research, please cite:
 
 ```bibtex
-@article{enact2025,
-  title={ENACT: Embodied Cognition through World Modeling from Egocentric Interaction},
-  author={ENACT Team},
-  year={2025}
+@article{wang2025enact,
+  title={ENACT: Evaluating Embodied Cognition with World Modeling of Egocentric Interaction},
+  author={Wang, Qineng and Huang, Wenlong and Zhou, Yu and Yin, Hang
+          and Bao, Tianwei and Lyu, Jianwen and Liu, Weiyu and Zhang, Ruohan
+          and Wu, Jiajun and Li, Fei-Fei and Li, Manling}
 }
 ```
 
