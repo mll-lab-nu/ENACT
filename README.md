@@ -5,7 +5,7 @@
 
 [![Homepage](https://img.shields.io/badge/🏠-Homepage-blue.svg)](https://enact-embodied-cognition.github.io/)
 [![arXiv](https://img.shields.io/badge/arXiv-Coming%20Soon-lightgrey.svg)](#)
-[![PDF](https://img.shields.io/badge/📄-PDF-0e8a16.svg)](#)
+[![PDF](https://img.shields.io/badge/📄-PDF-0e8a16.svg)](https://enact-embodied-cognition.github.io/enact.pdf)
 [![Dataset](https://img.shields.io/badge/🤗-Dataset-yellow.svg)](https://huggingface.co/datasets/MLL-Lab/ENACT)
 
 </div>
