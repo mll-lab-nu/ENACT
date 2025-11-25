@@ -495,7 +495,7 @@ Stage 3:            Generate QA           → QA/enact_ordering.jsonl
 
 ### Stage 0 (Optional): Collect Robot Data → `raw_hdf5/`
 
-**⚠️ Coming Soon:** Tutorial for collecting your own robot trajectories using BEHAVIOR-1K simulator.
+**Collect Your Own Data:** Please refer to [this tutorial](https://github.com/ChengshuLi/MoMaGen/blob/main/docs/tutorials/custom-tasks.md) for detailed information. ⚠️ This may require you to set up [GELLO](https://wuphilipp.github.io/gello_site/) or an additional environment.
 
 **Use Official Data Instead:**
 - **Option 1** - Our curated dataset (subset):
