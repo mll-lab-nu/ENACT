@@ -4,7 +4,7 @@
 <div align="center">
 
 [![Homepage](https://img.shields.io/badge/🏠-Homepage-blue.svg)](https://enact-embodied-cognition.github.io/)
-[![arXiv](https://img.shields.io/badge/arXiv-Coming%20Soon-lightgrey.svg)](#)
+[![arXiv](https://img.shields.io/badge/arXiv-2511.20937-b31b1b?logo=arxiv&logoColor=white)](https://arxiv.org/abs/2511.20937)
 [![PDF](https://img.shields.io/badge/📄-PDF-0e8a16.svg)](https://enact-embodied-cognition.github.io/enact.pdf)
 [![Dataset](https://img.shields.io/badge/🤗-Dataset-yellow.svg)](https://huggingface.co/datasets/MLL-Lab/ENACT)
 
@@ -843,7 +843,9 @@ If you use ENACT in your research, please cite:
   title={ENACT: Evaluating Embodied Cognition with World Modeling of Egocentric Interaction},
   author={Wang, Qineng and Huang, Wenlong and Zhou, Yu and Yin, Hang
           and Bao, Tianwei and Lyu, Jianwen and Liu, Weiyu and Zhang, Ruohan
-          and Wu, Jiajun and Li, Fei-Fei and Li, Manling}
+          and Wu, Jiajun and Li, Fei-Fei and Li, Manling},
+  journal={arXiv preprint arXiv:2511.20937},
+  year={2025}
 }
 ```
 
